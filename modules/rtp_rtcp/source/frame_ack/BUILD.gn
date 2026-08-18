@@ -1,0 +1,28 @@
+# Copyright 2026 The WebRTC project authors. All Rights Reserved.
+
+import("//webrtc.gni")
+
+rtc_library("frame_ack") {
+  sources = [
+    "frame_ack.cc",
+    "frame_ack.h",
+  ]
+
+  deps = [
+    "//api:array_view",
+    "//modules/rtp_rtcp:rtp_rtcp_format",
+    "//rtc_base:checks",
+  ]
+}
+
+if (rtc_include_tests) {
+  rtc_library("frame_ack_unittests") {
+    testonly = true
+    sources = [ "frame_ack_unittest.cc" ]
+
+    deps = [
+      ":frame_ack",
+      "//test:test_support",
+    ]
+  }
+}
